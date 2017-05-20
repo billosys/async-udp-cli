@@ -39,7 +39,7 @@
   :plugins [
     [cider/cider-nrepl "0.10.0"]
     [lein-cljsbuild "1.1.4" :exclusions [[org.clojure/clojure]]]
-    [lein-figwheel "0.5.8"]
+    [lein-figwheel "0.5.10"]
     [lein-pprint "1.1.1"]
     [lein-ring "0.9.7"]]
   :source-paths ["src/clj"]
@@ -81,9 +81,11 @@
           :language-in :ecmascript5
           :pretty-print false}}]}
   :figwheel {
-    :server-port 5076
+    :server-port 5099
+    :ring-handler timi.server.core/app
     :css-dirs ["resources/public/css"]
-    :server-logfile "var/logs/figwheel.log"}
+    ;:server-logfile "var/logs/figwheel.log"
+    :server-logfile false}
   :profiles {
     :uberjar {
       :aot [#"timi.server.*" #"timi.config.*"]}
@@ -101,8 +103,11 @@
         "dev-resources/src"]
       :repl-options {
         :init (set! *print-length* 50)
-        :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
-      :resource-paths ["config/dev"]}
+        :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]
+        }
+      :resource-paths ["config/dev"]
+      :clean-targets ^{:protect false}
+        ["resources/public/dist/cljs" :target-path]}
      :custom-persistence]
     :test [{
       :resource-paths ["config/test"]
@@ -114,6 +119,8 @@
     :local [{:resource-paths ["config/local"]}
             :custom-persistence]
     :demo [{:resource-paths ["config/demo"]}
+           :custom-persistence]
+    :build [{:resource-paths ["config/sample"]}
            :custom-persistence]
     :prod [{:resource-paths ["config/prod"]}
            :custom-persistence]
@@ -132,6 +139,7 @@
       "with-profile" "+local"
       "run" "-m" "timi.cli" "tasks" "create" :name]
     "timi-run" ["with-profile" "+local" "run"]
+    "timi-figwheel" ["with-profile" "+local" "figwheel"]
     "check-deps" ["with-profile" "+test" "ancient" "check" "all"]
     "lint" ["with-profile" "+test" "kibit"]
     "timi-build" ["with-profile" "+build" "do"
