@@ -1,9 +1,10 @@
-(defproject systems.billo/timi "0.2.0-SNAPSHOT"
+(defproject systems.billo/timi "0.3.0-SNAPSHOT"
   :description "A Clojure(Script)-based time tracker"
   :url "https://github.com/billosys/timi"
   :license {
     :name "Mozilla Public License Version 2.0"
     :url "https://www.mozilla.org/en-US/MPL/2.0/"}
+  :signing {:gpg-key "li@billo.systems"}
   :min-lein-version "2.7.1"
   :dependencies [
     [bouncer "1.0.1" :exclusions [com.andrewmcveigh/cljs-time]]
@@ -147,4 +148,5 @@
       ;["lint"] XXX enable once the 220 failing kibit errors are fixed
       ["test"]
       ["compile"]
-      ["uberjar"]]})
+      ["uberjar"]]
+    "timi-deploy" ["with-profile" "build" "deploy" "clojars"]})
