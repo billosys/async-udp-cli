@@ -1,0 +1,8 @@
+language: clojure
+lein: 2.7.1
+script:
+  - lein timi-build
+jdk:
+  - oraclejdk8
+  - oraclejdk7
+  - openjdk7
