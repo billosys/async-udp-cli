@@ -4,10 +4,12 @@ A time tracker written in Clojure(Script).
 
 ![Tími screenshot](docs/screenshot-2.png)
 
-This project is 100% based on the source code of the
-[Infi Alibi Time Tracker](https://github.com/infi-nl/alibi). We've made a
-handful of changes for our own needs and aesthetics, but the project owes all
-of its DNA to the original.
+This project started as a fork of the
+[Infi Alibi Time Tracker](https://github.com/infi-nl/alibi), but has since
+undergone major refactorings (with more to come). What started as a
+handful of changes for our own needs and aesthetics has evolved into something
+that is a new application in its own right. Still, Tímı owes much of its DNA
+and all of its beginnings to Unfi's Alibi.
 
 
 ## Features

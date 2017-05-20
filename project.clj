@@ -142,7 +142,7 @@
     "timi-run" ["with-profile" "+local" "run"]
     "timi-figwheel" ["with-profile" "+local" "figwheel"]
     "check-deps" ["with-profile" "+test" "ancient" "check" "all"]
-    "lint" ["with-profile" "+test" "kibit"]
+    "lint" ["with-profile" "+test" "kibit" "src/clj"]
     "timi-build" ["with-profile" "+build" "do"
       ;["check-deps"] XXX enable once clj-http 3.5.x is working with Tímı
       ;["lint"] XXX enable once the 220 failing kibit errors are fixed
