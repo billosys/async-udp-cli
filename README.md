@@ -1,18 +1,36 @@
 # Tímı
 
-A time tracker written in Clojure(Script).
+*A time tracker written in Clojure(Script)*
+
+#### Contents
+
+* [About](#about-)
+* [Screenshot](#screenshot-)
+* [Features](#features-)
+* [Dependencies](#dependencies-)
+* [Documentation](#documentation-)
+* [Usage](#usage-)
+  * [Initialization](#initialization-)
+  * [Configuration](#configuration-)
+  * [Build](#build-)
+  * [Projects and Tasks Population](#projects-and-tasks-population-)
+  * [Startup](#startup-)
+* [History](#history-)
+* [License](#license-)
+
+## About [&#x219F;](#contents)
+
+Tímı is a project time-tracking tool intended for use by uindividuals, non-profits, and small companies.
+
+
+## Screenshot [&#x219F;](#contents)
+
+Tímı in action:
 
 ![Tími screenshot](docs/screenshot-2.png)
 
-This project started as a fork of the
-[Infi Alibi Time Tracker](https://github.com/infi-nl/alibi), but has since
-undergone major refactorings (with more to come). What started as a
-handful of changes for our own needs and aesthetics has evolved into something
-that is a new application in its own right. Still, Tímı owes much of its DNA
-and all of its beginnings to Unfi's Alibi.
 
-
-## Features
+## Features [&#x219F;](#contents)
 
 This is far from a fully fledged time tracker, yet it has the following
 features, and more is on the way!
@@ -27,7 +45,7 @@ features, and more is on the way!
 * Out of the box Sqlite3 database support.
 
 
-## Dependencies
+## Dependencies [&#x219F;](#contents)
 
 The prerequisites for this route are:
 
@@ -38,9 +56,14 @@ The prerequisites for this route are:
 - Ensure that `make` is installed
 
 
-## Preparation
+## Documentation [&#x219F;](#contents)
 
-### Initialization
+Forthcoming ...
+
+
+## Usage [&#x219F;](#contents)
+
+### Initialization [&#x219F;](#contents)
 
 Clone the repo. Then, inside the repo, initialize a time tracker:
 
@@ -52,35 +75,26 @@ This will create a sqlite3 db with filename `var/data/timi.db`, which contains
 the right schema, but has no data yet.
 
 
-### Configuration
+### Configuration [&#x219F;](#contents)
 
-Before we create some data, you first need to setup a config file, and for
-that you need to create a key for cookie encryption, e.g. using:
+Before we create some data, you first need to setup a config file. For local
+development, copy the sample config:
+
+```
+$ cp config/sample/config.edn config/local
+```
+
+You'll want to change the encryption cookie, though. Generate a new one with:
 
 ```
 $ make cookie
 ```
 
-Then execute the following to create a config file, replacing the `:cookie-
-encryption-key` value with your own key and `[:sqlite :subname]` with the
-database file you picked in a previous step.
-
-```
-$ cat << EOF > config/local/config.edn
-{:cookie-encryption-key "xxxxxxxxxxxxxxxx"
- :selmer-caching? false
-
- :persistence :sqlite
- :persistence-strategies {}
- :sqlite {:subprotocol "sqlite" :subname "var/data/timi.db"}
-
- :authentication :single-user
- :single-user {:username "Alice"}}
-EOF
-```
+Then update your new `config/local/config.edn` file, replacing the same value
+for `:cookie-encryption-key` with the one `make cookie` generated for you.
 
 
-## Build
+### Build [&#x219F;](#contents)
 
 The Clojure and ClojureScript for the project can be built in one go with the
 following:
@@ -93,7 +107,7 @@ If you just want to do one or the other, you may use `make build-clj` or
 `make build-cljs`.
 
 
-### Projects Population
+### Projects and Tasks Population [&#x219F;](#contents)
 
 Now we can populate the database with some projects and tasks. Here's how you
 create a project:
@@ -116,19 +130,43 @@ $ lein timi-create-task "Programming" :for-project 1
 ```
 
 
-## Startup
+### Startup [&#x219F;](#contents)
 
-Run the server:
+For deployment and non-interactive development, simply run the server:
 
 ```
 $ make run
 ```
 
 If everything went well, there should now be a web server running on
-[http://localhost:3000](http://localhost:3000). Navigate to it and have fun!
+[http://localhost:5099](http://localhost:5099) (or whatever port you updated your 
+local configuration to have). Navigate to it and have fun!
 
 
-## License
+## History [&#x219F;](#contents)
+
+This project started as a fork of the
+[Infi Alibi Time Tracker](https://github.com/infi-nl/alibi), but has since
+undergone major refactorings (with more to come). What started as a
+handful of changes for our own needs and aesthetics has evolved into something
+that is a new application in its own right. Still, Tímı owes much of its DNA
+and all of its beginnings to Unfi's Alibi.
+
+If you would like to do interactive development with ClojureScript, Om, and/or
+CSS, you can run this instead:
+
+```
+$ lein timi-figwheel
+```
+
+As soon as you see the help text with all the functions you can use, open up
+[http://localhost:5099](http://localhost:5099) in your prefered browser. As soon
+as you do, you should then see the Clojure prompt appear in your terminal where
+you ran the command. You now have access to Om application state in the REPL
+and can run the client-side code there.
+
+
+## License [&#x219F;](#contents)
 
 Copyright © 2017 Infi Holding B.V. and contributers.
 
