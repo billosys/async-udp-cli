@@ -1,6 +1,9 @@
 # Tímı
+[![Build Status][travis-badge]][travis][![Clojars Project][clojars-badge]][clojars][![Clojure version][clojure-v]](project.clj)
 
 *A time tracker written in Clojure(Script)*
+
+[![][logo]][logo-large]
 
 #### Contents
 
@@ -173,3 +176,18 @@ Copyright © 2017 Infi Holding B.V. and contributers.
 Copyright © 2017 Billo Systems, Ltd. Co.
 
 Distributed under the Mozilla Public License Version 2.0
+
+
+<!-- Named page links below: /-->
+
+[travis]: https://travis-ci.org/billosys/timi
+[travis-badge]: https://travis-ci.org/billosys/timi.png?branch=master
+[deps]: http://jarkeeper.com/billosys/timi
+[deps-badge]: http://jarkeeper.com/billosys/timi/status.svg
+[logo]: resources/public/images/golden-clock-square-250px.png
+[logo-large]: resources/public/images/golden-clock-square-2400px.png
+[tag-badge]: https://img.shields.io/github/tag/billosys/timi.svg
+[tag]: https://github.com/billosys/timi/tags
+[clojure-v]: https://img.shields.io/badge/clojure-1.8.0-blue.svg
+[clojars]: https://clojars.org/systems.billo/timi
+[clojars-badge]: https://img.shields.io/billosys/v/timi.svg
