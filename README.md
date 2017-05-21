@@ -5,6 +5,7 @@
 
 [![][logo]][logo-large]
 
+
 #### Contents
 
 * [About](#about-)
@@ -21,16 +22,20 @@
 * [History](#history-)
 * [License](#license-)
 
+
 ## About [&#x219F;](#contents)
 
-Tímı is a project time-tracking tool intended for use by uindividuals, non-profits, and small companies.
+Tímı is a project time-tracking tool intended for use by individuals,
+non-profits, and small companies, originally based on
+[Infi Alibi Time Tracker](https://github.com/infi-nl/alibi) (more on
+that in the [History](#history-) section below.)
 
 
 ## Screenshot [&#x219F;](#contents)
 
 Tímı in action:
 
-![Tími screenshot](docs/screenshot-2.png)
+![Tími screenshot](resources/docs/images/screenshot-2.png)
 
 
 ## Features [&#x219F;](#contents)
@@ -61,10 +66,14 @@ The prerequisites for this route are:
 
 ## Documentation [&#x219F;](#contents)
 
-Forthcoming ...
+In addition to this README, there is documentation availble once the
+application is running:
+
+* http://localhost:5099/docs
 
 
 ## Usage [&#x219F;](#contents)
+
 
 ### Initialization [&#x219F;](#contents)
 
@@ -142,18 +151,8 @@ $ make run
 ```
 
 If everything went well, there should now be a web server running on
-[http://localhost:5099](http://localhost:5099) (or whatever port you updated your 
+[http://localhost:5099](http://localhost:5099) (or whatever port you updated your
 local configuration to have). Navigate to it and have fun!
-
-
-## History [&#x219F;](#contents)
-
-This project started as a fork of the
-[Infi Alibi Time Tracker](https://github.com/infi-nl/alibi), but has since
-undergone major refactorings (with more to come). What started as a
-handful of changes for our own needs and aesthetics has evolved into something
-that is a new application in its own right. Still, Tímı owes much of its DNA
-and all of its beginnings to Unfi's Alibi.
 
 If you would like to do interactive development with ClojureScript, Om, and/or
 CSS, you can run this instead:
@@ -167,6 +166,16 @@ As soon as you see the help text with all the functions you can use, open up
 as you do, you should then see the Clojure prompt appear in your terminal where
 you ran the command. You now have access to Om application state in the REPL
 and can run the client-side code there.
+
+
+## History [&#x219F;](#contents)
+
+This project started as a fork of the
+[Infi Alibi Time Tracker](https://github.com/infi-nl/alibi), but has since
+undergone major refactorings (with more to come). What started as a
+handful of changes for our own needs and aesthetics has evolved into something
+that is a new application in its own right. Still, Tímı owes much of its DNA
+and all of its beginnings to Unfi's Alibi.
 
 
 ## License [&#x219F;](#contents)

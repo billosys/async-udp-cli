@@ -4,5 +4,4 @@ script:
   - lein timi-build
 jdk:
   - oraclejdk8
-  - oraclejdk7
   - openjdk7
