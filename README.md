@@ -190,4 +190,4 @@ Distributed under the Mozilla Public License Version 2.0
 [tag]: https://github.com/billosys/timi/tags
 [clojure-v]: https://img.shields.io/badge/clojure-1.8.0-blue.svg
 [clojars]: https://clojars.org/systems.billo/timi
-[clojars-badge]: https://img.shields.io/billosys/v/timi.svg
+[clojars-badge]: https://img.shields.io/clojars/v/systems.billo/timi.svg
