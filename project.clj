@@ -1,4 +1,4 @@
-(defproject systems.billo/timi "0.3.0-SNAPSHOT"
+(defproject systems.billo/timi "0.4.0-SNAPSHOT"
   :description "A Clojure(Script)-based time tracker"
   :url "https://github.com/billosys/timi"
   :license {
