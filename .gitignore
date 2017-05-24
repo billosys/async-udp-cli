@@ -19,3 +19,5 @@ pom.xml.asc
 /var/data/
 /var/logs/
 /.cljs_rhino_repl
+/node_modules
+/bin

@@ -14,7 +14,7 @@
     [clj-time "0.13.0" :exclusions [joda-time]]
     [clojure.jdbc/clojure.jdbc-c3p0 "0.3.2"]
     [clojusc/trifl "0.1.0-SNAPSHOT"]
-    [clojusc/twig "0.3.2-SNAPSHOT"]
+    [clojusc/twig "0.3.1"]
     [com.andrewmcveigh/cljs-time "0.4.0"]
     [com.stuartsierra/component "0.3.2"]
     [compojure "1.6.0"]
@@ -35,7 +35,8 @@
     [ring.middleware.conditional "0.2.0"]
     [ring/ring-codec "1.0.1"]
     [ring/ring-core "1.6.1"]
-    [selmer "1.10.7" :exclusions [joda-time]]]
+    [selmer "1.10.7" :exclusions [joda-time]]
+    [systems.billo/net "0.3.3-beta12-Clojure1.8"]]
   :plugins [
     [cider/cider-nrepl "0.10.0"]
     [lein-cljsbuild "1.1.4" :exclusions [[org.clojure/clojure]]]
@@ -47,7 +48,7 @@
   :cljsbuild {
     :builds
       [{:id "dev"
-        :source-paths ["src/cljs"]
+        :source-paths ["src/cljs/app"]
         :figwheel {}
         :compiler {
           :main timi.client.core
@@ -58,7 +59,7 @@
           :language-in :ecmascript5
           :preloads [devtools.preload]}}
        {:id "single-file"
-        :source-paths ["src/cljs"]
+        :source-paths ["src/cljs/app"]
         :compiler {
           :output-to "resources/public/dist/cljs/timi.js"
           :main timi.client.core
@@ -67,7 +68,7 @@
           :language-in :ecmascript5
           :pretty-print true}}
        {:id "min"
-        :source-paths ["src/cljs"]
+        :source-paths ["src/cljs/app"]
         :compiler {
           :output-to "resources/public/dist/cljs/timi.js"
           :main timi.client.core
@@ -79,7 +80,18 @@
           ;:pseudo-names true
           :verbose true
           :language-in :ecmascript5
-          :pretty-print false}}]}
+          :pretty-print false}}
+        {:id "cli"
+         :source-paths ["src/cljs/cli"]
+         :compiler {
+           :output-to "bin/timi-cli.js"
+           :output-dir "target/cljs/cli"
+           :optimizations :simple
+           :pretty-print true
+           :main timi.client.cli
+           :target :nodejs
+           :npm-deps {:colors "1.1.2"}
+           :verbose true}}]}
   :figwheel {
     :server-port 5099
     :ring-handler timi.server.core/app
@@ -146,6 +158,8 @@
     :prod [{:resource-paths ["config/prod"]}
            :custom-persistence]
     :custom-persistence {}}
+  ;; XXX Note: most (if not all) of the aliases are going to change or go away
+  ;;     once we switch to the new CLI
   :aliases {
     "timi-help" [
       "with-profile" "+local"
@@ -169,7 +183,9 @@
       ["test"]
       ["compile"]
       ["uberjar"]
-      ["cljsbuild" "once"]]
+      ["cljsbuild" "once"]
+      ["cljsbuild" "once" "cli"]]
+    "timi-build-cli" ["with-profile" "+build" "cljsbuild" "once" "cli"]
     "timi-deploy" ["with-profile" "build" "deploy" "clojars"]
     "timi-server-docs" ["with-profile" "+build,+docs,+server-docs" "codox"]
     "timi-client-docs" ["with-profile" "+build,+docs,+client-docs" "codox"]
