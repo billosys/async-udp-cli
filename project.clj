@@ -25,6 +25,7 @@
     [org.clojure/clojure "1.8.0"]
     [org.clojure/data.json "0.2.6"]
     [org.clojure/java.jdbc "0.7.0-alpha2"]
+    [org.clojure/tools.cli "0.3.5"]
     [org.webjars/bootstrap-datepicker "1.6.4"]
     [org.webjars/bootswatch-superhero "3.3.7"]
     [org.webjars/font-awesome "4.7.0"]
@@ -84,7 +85,7 @@
         {:id "cli"
          :source-paths ["src/cljs/cli"]
          :compiler {
-           :output-to "bin/timi-cli.js"
+           :output-to "bin/timi"
            :output-dir "target/cljs/cli"
            :optimizations :simple
            :pretty-print true
@@ -161,12 +162,6 @@
   ;; XXX Note: most (if not all) of the aliases are going to change or go away
   ;;     once we switch to the new CLI
   :aliases {
-    "timi-help" [
-      "with-profile" "+local"
-      "run" "-m" "timi.cli"]
-    "timi-init" [
-      "with-profile" "+local"
-      "run" "-m" "timi.cli" "sqlite" "create-db" :filename]
     "timi-create-project" [
       "with-profile" "+local"
       "run" "-m" "timi.cli" "projects" "create" :name]
@@ -185,8 +180,14 @@
       ["uberjar"]
       ["cljsbuild" "once"]
       ["cljsbuild" "once" "cli"]]
-    "timi-build-cli" ["with-profile" "+build" "cljsbuild" "once" "cli"]
     "timi-deploy" ["with-profile" "build" "deploy" "clojars"]
     "timi-server-docs" ["with-profile" "+build,+docs,+server-docs" "codox"]
     "timi-client-docs" ["with-profile" "+build,+docs,+client-docs" "codox"]
-    "timi-docs" ["do" ["timi-server-docs"] ["timi-client-docs"]]})
+    "timi-docs" ["do" ["timi-server-docs"] ["timi-client-docs"]]}
+  :repl-options {
+    :prompt (fn [ns] (str "\u001B[35m[\u001B[34m"
+                          ns
+                          "\u001B[35m]\u001B[33m λ:\u001B[m "))
+    :welcome ~(do
+                (println (slurp "resources/text/banner.txt"))
+                (println (slurp "resources/text/loading.txt")))})

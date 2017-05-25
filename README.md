@@ -14,11 +14,12 @@
 * [Dependencies](#dependencies-)
 * [Documentation](#documentation-)
 * [Usage](#usage-)
-  * [Initialization](#initialization-)
-  * [Configuration](#configuration-)
   * [Build](#build-)
+  * [Configuration](#configuration-)
+  * [Starting](#starting-)
+  * [CLI Server](#cli-server-)
+  * [Data Initialization](#data-initialization-)
   * [Projects and Tasks Population](#projects-and-tasks-population-)
-  * [Startup](#startup-)
 * [History](#history-)
 * [License](#license-)
 
@@ -75,16 +76,22 @@ application is running:
 ## Usage [&#x219F;](#contents)
 
 
-### Initialization [&#x219F;](#contents)
+### Build [&#x219F;](#contents)
 
-Clone the repo. Then, inside the repo, initialize a time tracker:
+Before you can do much with Tímı, you'll need to build it. As long as you
+have all the dependencies install on your system (see above), it's as simple
+as this:
 
 ```
-$ make var/data/timi.db
+$ make
 ```
 
-This will create a sqlite3 db with filename `var/data/timi.db`, which contains
-the right schema, but has no data yet.
+This will do a lot, but can be summarized with the following:
+
+* Download all the Clojure and JavaScript (Node.js) dependencies
+* Build the server code
+* Build the client code
+* Build the CLI tool
 
 
 ### Configuration [&#x219F;](#contents)
@@ -106,17 +113,76 @@ Then update your new `config/local/config.edn` file, replacing the same value
 for `:cookie-encryption-key` with the one `make cookie` generated for you.
 
 
-### Build [&#x219F;](#contents)
+### Starting [&#x219F;](#contents)
 
-The Clojure and ClojureScript for the project can be built in one go with the
+With the application built, you're ready to start it. If you just want to
+use the application and not do any development work, simply do:
+
+```
+$ make run
+```
+
+If you'll be doing server-side development and want access to the REPL:
+
+```
+$ make repl
+```
+
+Once the REPL finishes loading, start the application with `(run)`. You can
+reload new code and restart the application by typing `(reset)`. The server
+running in the REPL will be available on
+[http://localhost:5098](http://localhost:5098)
+
+If you'll be doing client-side development, then do:
+
+```
+$ make dev
+```
+
+If you then load up the application in your browser at
+[http://localhost:5099](http://localhost:5099),
+you'll see a prompt appear back in your terminal: this is ClojureScript, and
+you have access to the client-side of the application, as it's running in your
+browser.
+
+
+### CLI Server  [&#x219F;](#contents)
+
+One of the services that is started when the app comes up is a command-line
+server, listening on port 5097. The Tímı cli tool that gets installed to
+`./bin/timi` connects to this server to issue your commands and return results.
+This feature allows for command-line operations that are much, much faster
+than usual JVM commands (since there's no start-up cost for every command).
+
+Now make sure you have easy access to `timi` by adding its location to
+your `PATH`:
+
+```
+$ export PATH=$PATH:`pwd`/bin
+```
+
+
+### Data Initialization [&#x219F;](#contents)
+
+Database setup is done using the `timi` CLI tool:
+
+```
+$ timi db init
+```
+
+If you are using the values defined for you in the sample config, this will
+create a sqlite3 db with filename `var/data/timi.db`, which contains
+the right schema, but has no data yet.
+
+If you would like to override your configuration value. you can do the
 following:
 
 ```
-$ make
+$ timi db init my/path/timi.db
 ```
 
-If you just want to do one or the other, you may use `make build-clj` or
-`make build-cljs`.
+Note, however, that you will need to update your configuration file to point
+to the new location of the database.
 
 
 ### Projects and Tasks Population [&#x219F;](#contents)
@@ -141,31 +207,10 @@ $ lein timi-create-task "Project management" :for-project 1 :billing-method :ove
 $ lein timi-create-task "Programming" :for-project 1
 ```
 
-
-### Startup [&#x219F;](#contents)
-
-For deployment and non-interactive development, simply run the server:
-
-```
-$ make run
-```
-
-If everything went well, there should now be a web server running on
-[http://localhost:5099](http://localhost:5099) (or whatever port you updated your
-local configuration to have). Navigate to it and have fun!
-
-If you would like to do interactive development with ClojureScript, Om, and/or
-CSS, you can run this instead:
-
-```
-$ lein timi-figwheel
-```
-
-As soon as you see the help text with all the functions you can use, open up
-[http://localhost:5099](http://localhost:5099) in your prefered browser. As soon
-as you do, you should then see the Clojure prompt appear in your terminal where
-you ran the command. You now have access to Om application state in the REPL
-and can run the client-side code there.
+At this point, you're ready to start tracking time! Visit either
+[http://localhost:5098](http://localhost:5098) or
+[http://localhost:5099](http://localhost:5099), depending upon how you have
+started Tímı.
 
 
 ## History [&#x219F;](#contents)
