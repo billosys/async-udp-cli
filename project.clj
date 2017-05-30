@@ -37,7 +37,9 @@
     [ring/ring-codec "1.0.1"]
     [ring/ring-core "1.6.1"]
     [selmer "1.10.7" :exclusions [joda-time]]
-    [systems.billo/net "0.3.3-beta12-Clojure1.8"]]
+    [systems.billo/inet-address "0.1.0"]
+    [systems.billo/net "0.3.3-beta12-Clojure1.8"]
+    [systems.billo/sockets "0.1.0"]]
   :plugins [
     [cider/cider-nrepl "0.10.0"]
     [lein-cljsbuild "1.1.4" :exclusions [[org.clojure/clojure]]]
