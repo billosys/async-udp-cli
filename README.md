@@ -161,6 +161,13 @@ your `PATH`:
 $ export PATH=$PATH:`pwd`/bin
 ```
 
+There's also an auto-completion script you can use to get commands and
+subcommands at the double-tap of the `<TAB>` key:
+
+```
+$ source resources/bash/timi-auto-complete
+```
+
 
 ### Data Initialization [&#x219F;](#contents)
 

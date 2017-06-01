@@ -4,4 +4,8 @@ script:
   - lein timi-build
 jdk:
   - oraclejdk8
-  - openjdk7
+  # XXX The following is commented out because we're building the node.js
+  #     ClojureScript CLI and we're getting an error with OpenJDK7:
+  #       java.lang.IllegalArgumentException:
+  #       No matching field found: isAlive for class java.lang.UNIXProcess
+  #- openjdk7
