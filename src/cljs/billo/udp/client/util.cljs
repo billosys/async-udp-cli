@@ -1,6 +1,7 @@
 (ns billo.udp.client.util
   (:require
-    [clojure.string :as string]))
+    [clojure.string :as string]
+    [taoensso.timbre :as log]))
 
 (defn args->str
   [args]
@@ -10,7 +11,7 @@
   ([]
     (wait 3000))
   ([timeout]
-    (js/setTimeout #(println "UDP client timed out.")
+    (js/setTimeout #(log/warn "UDP client timed out.")
                    timeout)))
 
 (defn obj->clj
@@ -24,9 +25,19 @@
 
 (defn get-env
   ([]
-    (println "ENV: " (.-env js/process))
-    (println "env: " (obj->clj (.-env js/process)))
     (obj->clj (.-env js/process)))
   ([var-name]
     (or (get (get-env) var-name)
-        (throw (str "ENV has no variabel named '" k "'")))))
+        (log/error (str "ENV has no variabel named '" k "'")))))
+
+(defn get-log-level
+  [default]
+  (if-let [level (get-env "LOG_LEVEL")]
+    (if (empty? level)
+      default
+      (keyword level))
+    default))
+
+(defn set-log-level
+  []
+  (log/set-level! (get-log-level :info)))

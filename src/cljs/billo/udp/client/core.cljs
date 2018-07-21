@@ -12,12 +12,14 @@
 
 (defn on-listen
   [client callback]
+  (log/debug "Listening ...")
   (.on client "listening" callback))
 
 (defn send
   [client port data]
   (let [buf (js/Buffer. data)]
-    (log/debug "Sending data:" data)
+    (log/debug "Sending message ...")
+    (log/trace (str "Data:" data))
     (.send client
            buf
            0

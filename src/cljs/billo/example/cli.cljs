@@ -15,7 +15,8 @@
 (defn handle-receive
   [client data]
   (let [buffer (js/Buffer. data)]
-    (log/debug "Received data:" data)
+    (log/debug "Received data.")
+    (log/trace (str "Data: " data))
     (udp/close client)
     (log/debug "Disconnected.")
     (println (str data))
@@ -25,7 +26,8 @@
 
 (defn -main
   [& args]
-  (log/debug "Got args:" args)
+  (util/set-log-level)
+  (log/debug (str "Got args: " args))
   (let [client (udp/client)
         port (js/parseInt (util/get-env "UDP_PORT"))
         data (util/args->str args)]
