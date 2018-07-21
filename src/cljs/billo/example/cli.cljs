@@ -3,14 +3,12 @@
     [billo.udp.client.core :as udp]
     [billo.udp.client.util :as util]
     [cljs.nodejs :as node]
-    [clojusc.twig :as logger]
+    ; [clojusc.twig :as logger]
     [taoensso.timbre :as log]))
 
 ;;; CLI setup and functions
 
 (node/enable-util-print!)
-
-(logger/set-level! [billo] :debug)
 
 ;;; UDP Callback
 
