@@ -1,7 +1,8 @@
-# async-udp
+# async-udp-cli
+
 [![Build Status][travis-badge]][travis][![Clojars Project][clojars-badge]][clojars][![Clojure version][clojure-v]](project.clj)
 
-*A Clojure utility library for async UDP clients/servers*
+*A Clojure utility library for faster CLIs with async UDP clients/servers*
 
 [![][logo]][logo-large]
 
@@ -88,14 +89,14 @@ Distributed under the Apache License Version 2.0.
 
 <!-- Named page links below: /-->
 
-[travis]: https://travis-ci.org/billosys/async-udp
-[travis-badge]: https://travis-ci.org/billosys/async-udp.png?branch=master
+[travis]: https://travis-ci.org/billosys/async-udp-cli
+[travis-badge]: https://travis-ci.org/billosys/async-udp-cli.png?branch=master
 [deps]: http://jarkeeper.com/billosys/async-udp
-[deps-badge]: http://jarkeeper.com/billosys/async-udp/status.svg
+[deps-badge]: http://jarkeeper.com/billosys/async-udp-cli/status.svg
 [logo]: resources/public/images/golden-clock-square-250px.png
 [logo-large]: resources/public/images/golden-clock-square-2400px.png
 [tag-badge]: https://img.shields.io/github/tag/billosys/async-udp.svg
-[tag]: https://github.com/billosys/async-udp/tags
+[tag]: https://github.com/billosys/async-udp-cli/tags
 [clojure-v]: https://img.shields.io/badge/clojure-1.9.0-blue.svg
 [clojars]: https://clojars.org/systems.billo/async-udp
-[clojars-badge]: https://img.shields.io/clojars/v/systems.billo/async-udp.svg
+[clojars-badge]: https://img.shields.io/clojars/v/systems.billo/async-udp-cli.svg

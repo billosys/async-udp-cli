@@ -1,6 +1,6 @@
-(defproject systems.billo/async-udp "0.1.0-SNAPSHOT"
-  :description "A Clojure utility library for async UDP clients/servers"
-  :url "https://github.com/billosys/async-udp"
+(defproject systems.billo/async-udp-cli "0.1.0-SNAPSHOT"
+  :description "A Clojure utility library for faster CLIs with async UDP clients/servers"
+  :url "https://github.com/billosys/async-udp-cli"
   :license {
     :name "Apache License, Version 2.0"
     :url "http://www.apache.org/licenses/LICENSE-2.0"}
