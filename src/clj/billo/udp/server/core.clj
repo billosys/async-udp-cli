@@ -1,7 +1,7 @@
-(ns billo.udp.server
+(ns billo.udp.server.core
   (:require
-    [billo.udp.const :as const]
-    [billo.udp.util :as util]
+    [billo.udp.server.const :as const]
+    [billo.udp.server.util :as util]
     [clojure.core.async :as async]
     [inet.address :as inet]
     [sockets.datagram.packet :as packet]

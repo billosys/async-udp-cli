@@ -1,4 +1,4 @@
-(ns billo.udp.util
+(ns billo.udp.server.util
   (:import
     (clojure.lang Keyword)))
 
