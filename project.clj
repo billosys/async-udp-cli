@@ -33,6 +33,7 @@
       :plugins [
         [lein-shell "0.5.0"]]}
     :clojurescript {
+      :source-paths ["src/cljs"]
       :dependencies [
         [org.clojure/clojurescript "1.10.339"]]
       :plugins [
@@ -73,4 +74,4 @@
     "clean-build-cli" ["with-profile" "+clojurescript,+client-example" "do"
       ["clean-cljs"]
       ["build-cli"]]
-    "deploy" ["with-profile" "+clojure" "deploy"]})
+    "deploy" ["with-profile" "+clojure,+clojurescript" "deploy"]})
