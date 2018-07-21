@@ -1,7 +1,7 @@
 language: clojure
-lein: 2.7.1
+lein: 2.8.1
 script:
-  - lein timi-build
+  - lein ubjerjar
 jdk:
   - oraclejdk8
   # XXX The following is commented out because we're building the node.js
