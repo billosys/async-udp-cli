@@ -1,43 +1,19 @@
-(ns timi.server.cli.udp
+(ns billo.udp.server
   (:require
+    [billo.udp.const :as const]
+    [billo.udp.util :as util]
     [clojure.core.async :as async]
     [inet.address :as inet]
     [sockets.datagram.packet :as packet]
-    [sockets.datagram.socket :as socket]
-    [taoensso.timbre :as log]
-    [timi.server.cli.core :as cli])
+    [sockets.datagram.socket :as socket])
   (:import
     (clojure.lang Keyword)
     (java.net SocketException)))
 
-(def max-packet-size 4096)
-
-(defmulti ->bytes type)
-
-(defmethod ->bytes String
-  [text]
-  (let [bytes (.getBytes text "UTF-8")]
-    (byte-array (count bytes) bytes)))
-
-(defmethod ->bytes Keyword
-  [data]
-  (->bytes (str data)))
-
-(defn bytes->str
-  [data]
-  (new String data "UTF-8"))
-
-(defn cli-service
-  [in out]
-  (async/go-loop []
-    (let [dest (async/<! in)]
-      (async/>! out dest)
-      (recur))))
-
 (defn receive
   [sock]
   (try
-    (socket/receive sock max-packet-size)
+    (socket/receive sock const/max-packet-size)
     (catch SocketException e nil)))
 
 (defn packet-reader
@@ -47,17 +23,20 @@
       (when-let [pkt (receive sock)]
         (async/>! in {:remote-addr (packet/address pkt)
                       :remote-port (packet/port pkt)
-                      :command (bytes->str (packet/data pkt))})
+                      :data (util/bytes->str (packet/data pkt))})
         (recur)))
     in))
 
-(defn cli-writer
-  [config sock]
+(defn packet-writer
+  [sock opts]
   (let [out (async/chan)]
     (async/go-loop []
       (let [msg (async/<! out)
-            pkt-text (cli/run config (:command msg))
-            pkt-data (->bytes pkt-text)
+            parser-fn (:parser-fn opts)
+            parser-opts (:parser-opts opts)
+            data (:data msg)
+            pkt-text (parser-fn data parser-opts)
+            pkt-data (util/->bytes pkt-text)
             pkt (packet/create pkt-data
                                (count pkt-data)
                                (:remote-addr msg)
@@ -66,13 +45,25 @@
       (recur))
     out))
 
-(defn serve
-  [config]
-  (let [sock (-> config
-                 (get-in [:cli :server :port])
-                 (socket/create))
+(defn io-service
+  [in out]
+  (async/go-loop []
+    (let [dest (async/<! in)]
+      (async/>! out dest)
+      (recur))))
+
+(defn run
+  "Required options:
+  * `:port` - UDP port
+  * `:parser-fn` - the function that will parse the data sent over UDP; this
+                   function expects two args: the data and a map of options
+                   that may be used by the parser function.
+  * `:parser-opts` - the options to pass as the second argument to the parser
+                     function."
+  [opts]
+  (let [sock (socket/create (:port opts))
         in (packet-reader sock)
-        out (cli-writer config sock)]
+        out (packet-writer sock opts)]
     (async/go
-      (cli-service in out))
+      (io-service in out))
     (fn [] (socket/close sock))))
