@@ -1,4 +1,4 @@
-(ns timi.client.udp
+(ns billo.udp.client.core
   (:require
     [cljs.nodejs :as node]
     [taoensso.timbre :as log]))
@@ -15,16 +15,14 @@
   (.on client "listening" callback))
 
 (defn send
-  [client config data]
-  (let [buf (js/Buffer. data)
-        cfg (get-in config [:cli :server])]
-    (log/debug cfg)
+  [client port data]
+  (let [buf (js/Buffer. data)]
     (log/debug "Sending data:" data)
     (.send client
            buf
            0
            buf.length
-           (get-in config [:cli :server :port]))))
+           port)))
 
 (defn close
   [client]

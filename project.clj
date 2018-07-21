@@ -18,10 +18,12 @@
       :source-paths ["src/clj"]
       :dependencies [
         [clojusc/trifl "0.3.0"]
-        [clojusc/twig "0.3.3"]
         [org.clojure/core.async "0.4.474"]
         [systems.billo/inet-address "0.1.1"]
         [systems.billo/sockets "0.1.1"]]}
+    :client-example {
+      :dependencies [
+        [clojusc/twig "0.3.3"]]}
     :clojurescript {
       :dependencies [
         [org.clojure/clojurescript "1.10.339"]]
@@ -36,14 +38,15 @@
               :output-dir "target/cljs/billo"
               :optimizations :simple
               :pretty-print true
-              :main billo.udp.example
+              :main billo.example.cli
               :target :nodejs
               :verbose true}}]}}}
   :aliases {
     "ubercompile" ["with-profile" "+ubercompile,+clojure" "uberjar"]
     "uberjar" ["with-profile" "+clojure" "uberjar"]
     "deploy" ["with-profile" "+clojure" "deploy"]
-    "build-bin" ["with-profile" "+clojurescript" "cljsbuild" "once" "cli"]
+    "build-bin" ["with-profile" "+clojurescript,+client-example"
+                 "cljsbuild" "once" "cli"]
     "check-vers" ["with-profile" "+lint" "ancient" "check" ":all"]
     "check-jars" ["with-profile" "+lint" "do"
       ["deps" ":tree"]
