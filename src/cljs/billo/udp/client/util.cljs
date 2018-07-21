@@ -1,5 +1,6 @@
 (ns billo.udp.client.util
   (:require
+    [cljs.nodejs :as node]
     [clojure.string :as string]
     [taoensso.timbre :as log]))
 
@@ -11,7 +12,9 @@
   ([]
     (wait 3000))
   ([timeout]
-    (js/setTimeout #(log/warn "UDP client timed out.")
+    (js/setTimeout #(do
+                      (log/warn "UDP client timed out.")
+                      (.exit node/process))
                    timeout)))
 
 (defn obj->clj
