@@ -53,6 +53,8 @@ sys	0m0.890s
 
 ## Usage [&#x219F;](#contents)
 
+### Example
+
 In one terminal, run the example server:
 
 ```
@@ -78,17 +80,25 @@ an environment variable:
 $ LOG_LEVEL=debug UDP_PORT=5097 ./bin/example arg1 arg2 arg3
 ```
 
+### Exmaple Code
+
+The above usage demonstration is run against the following example server and client:
+
 * [Server-side example](https://github.com/billosys/async-udp-cli/blob/master/src/clj/billo/example/cli_server.clj)
 * [Client-side example](https://github.com/billosys/async-udp-cli/blob/master/src/cljs/billo/example/cli.cljs)
 
 Note that `cli.cljs` gets compiled to `./bin/example` and is used from the system shell like a regular executable.
 
+### General Steps Required
+
 To use async-udp-cli in your own project, your server code will need to:
+
  * define your own parser function that takes two args: data and an options map (which may be empty)
  * define a hash-map with values for the keys `:port`, `:parser-fn`, and `:parser-opts`
  * pass this hash map when starting the UDP server with `billo.udp.server.core/run`
  
 Your client code will need to:
+
  * be ClojureScript with the build target of `:nodejs`
  * connect to the UDP server you started
  * convert the args to strings
