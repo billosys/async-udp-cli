@@ -84,7 +84,7 @@ an environment variable:
 $ LOG_LEVEL=debug UDP_PORT=5097 ./bin/example arg1 arg2 arg3
 ```
 
-### Exmaple Code [&#x219F;](#contents)
+### Example Code [&#x219F;](#contents)
 
 The above usage demonstration is run against the following example server and client:
 
