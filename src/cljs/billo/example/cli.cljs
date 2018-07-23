@@ -19,7 +19,6 @@
     (log/trace (str "Data: " data))
     (udp/close client)
     (log/debug "Disconnected.")
-    (println (str data))
     (.exit node/process)))
 
 ;;; Main
