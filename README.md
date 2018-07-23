@@ -11,6 +11,10 @@
 
 * [About](#about-)
 * [Usage](#usage-)
+   * Example
+   * Example Code
+   * General Steps Required
+* [Libraries of Interest](#libraries-of-interest-)
 * [License](#license-)
 
 
@@ -106,6 +110,14 @@ Your client code will need to:
  * exit the Node.js process
 
 That's all there is to it!
+
+
+## Libraries of Interest
+
+This project makes use of the following two libraries which may be of more general interest:
+
+* [sockets](https://github.com/billosys/sockets) - A UDP socket Clojure library (that wraps a number of `java.net` datagram classes); a wrapper for TCP sockets is in the works.
+* [inet-address](https://github.com/billosys/inet-address) - A Clojure wrapper for the following `java.net` classes: `InetAddress`, `Inet4Address`, `Inet6Address`, and `NetworkInterface`
 
 
 ## License [&#x219F;](#contents)
