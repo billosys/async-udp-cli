@@ -57,7 +57,7 @@ sys	0m0.890s
 
 ## Usage [&#x219F;](#contents)
 
-### Example
+### Example [&#x219F;](#contents)
 
 In one terminal, run the example server:
 
@@ -84,7 +84,7 @@ an environment variable:
 $ LOG_LEVEL=debug UDP_PORT=5097 ./bin/example arg1 arg2 arg3
 ```
 
-### Exmaple Code
+### Exmaple Code [&#x219F;](#contents)
 
 The above usage demonstration is run against the following example server and client:
 
@@ -93,7 +93,7 @@ The above usage demonstration is run against the following example server and cl
 
 Note that `cli.cljs` gets compiled to `./bin/example` and is used from the system shell like a regular executable.
 
-### General Steps Required
+### General Steps Required [&#x219F;](#contents)
 
 To use async-udp-cli in your own project, your server code will need to:
 
@@ -112,12 +112,12 @@ Your client code will need to:
 That's all there is to it!
 
 
-## Libraries of Interest
+## Libraries of Interest [&#x219F;](#contents)
 
 This project makes use of the following two libraries which may be of more general interest:
 
-* [sockets](https://github.com/billosys/sockets) - A UDP socket Clojure library (that wraps a number of `java.net` datagram classes); a wrapper for TCP sockets is in the works.
-* [inet-address](https://github.com/billosys/inet-address) - A Clojure wrapper for the following `java.net` classes: `InetAddress`, `Inet4Address`, `Inet6Address`, and `NetworkInterface`
+* [sockets](https://github.com/billosys/sockets) ([docs[http://billo.systems/sockets/current/index]) - A UDP socket Clojure library (that wraps a number of `java.net` datagram classes); a wrapper for TCP sockets is in the works.
+* [inet-address](https://github.com/billosys/inet-address) ([docs[http://billo.systems/sockets/current/index]) - A Clojure wrapper for the following `java.net` classes: `InetAddress`, `Inet4Address`, `Inet6Address`, and `NetworkInterface`
 
 
 ## License [&#x219F;](#contents)
