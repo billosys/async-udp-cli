@@ -116,8 +116,8 @@ That's all there is to it!
 
 This project makes use of the following two libraries which may be of more general interest:
 
-* [sockets](https://github.com/billosys/sockets) ([docs](http://billo.systems/sockets/current/index)) - A UDP socket Clojure library (that wraps a number of `java.net` datagram classes); a wrapper for TCP sockets is in the works.
-* [inet-address](https://github.com/billosys/inet-address) ([docs](http://billo.systems/sockets/current/index)) - A Clojure wrapper for the following `java.net` classes: `InetAddress`, `Inet4Address`, `Inet6Address`, and `NetworkInterface`
+* [sockets](https://github.com/billosys/sockets) ([docs](http://billo.systems/sockets/current/)) - A UDP socket Clojure library (that wraps a number of `java.net` datagram classes); a wrapper for TCP sockets is in the works.
+* [inet-address](https://github.com/billosys/inet-address) ([docs](http://billo.systems/inet-address/current/)) - A Clojure wrapper for the following `java.net` classes: `InetAddress`, `Inet4Address`, `Inet6Address`, and `NetworkInterface`
 
 
 ## License [&#x219F;](#contents)
