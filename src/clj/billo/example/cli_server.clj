@@ -55,5 +55,4 @@
     (component/start system)
     ;; Setup interrupt/terminate handling
     (java/add-shutdown-handler #(component/stop system))
-    ; (java/join-current-thread)
-    ))
+    (java/join-current-thread)))
