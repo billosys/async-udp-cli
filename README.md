@@ -93,8 +93,8 @@ Distributed under the Apache License Version 2.0.
 [travis-badge]: https://travis-ci.org/billosys/async-udp-cli.png?branch=master
 [deps]: http://jarkeeper.com/billosys/async-udp
 [deps-badge]: http://jarkeeper.com/billosys/async-udp-cli/status.svg
-[logo]: resources/public/images/golden-clock-square-250px.png
-[logo-large]: resources/public/images/golden-clock-square-2400px.png
+[logo]: https://avatars1.githubusercontent.com/u/8921204?&u=228b6e7c36c0b51e08e45a006c73cbdf4fa76ee1&s=250
+[logo-large]: https://avatars1.githubusercontent.com/u/8921204?&u=228b6e7c36c0b51e08e45a006c73cbdf4fa76ee1
 [tag-badge]: https://img.shields.io/github/tag/billosys/async-udp.svg
 [tag]: https://github.com/billosys/async-udp-cli/tags
 [clojure-v]: https://img.shields.io/badge/clojure-1.9.0-blue.svg
