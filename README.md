@@ -41,9 +41,8 @@ sys     0m0.032s
 
 So, pretty fast ;-) 
 
-By comparison, the time taken to start up and stop the
-server JVM (comparable to what a JVM-based CLI tool would do) takes this
-lone:
+By comparison, here's how long it takes to start up and stop the
+server JVM (comparable to what a JVM-based CLI tool would do):
 
 ```
 real	0m7.405s
