@@ -39,7 +39,9 @@ user    0m0.199s
 sys     0m0.032s
 ```
 
-So, pretty fast ;-) By comparison, the time taken to start up and stop the
+So, pretty fast ;-) 
+
+By comparison, the time taken to start up and stop the
 server JVM (comparable to what a JVM-based CLI tool would do) takes this
 lone:
 
