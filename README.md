@@ -31,7 +31,6 @@ Here's the output from the example CLI hitting the example CLI server:
 $ time UDP_PORT=5097 ./bin/example arg1 arg2 arg3
 ```
 ```
-ERROR [billo.udp.client.util:31] - ENV has no variabel named ''
 Simple cli-parser echoing back data: arg1 arg2 arg3
 
 
