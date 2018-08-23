@@ -6,7 +6,11 @@
     :url "http://www.apache.org/licenses/LICENSE-2.0"}
   :min-lein-version "2.8.1"
   :dependencies [
-    [org.clojure/clojure "1.9.0"]]
+    [clojusc/trifl "0.3.0"]
+    [org.clojure/clojure "1.9.0"]
+    [org.clojure/core.async "0.4.474"]
+    [systems.billo/inet-address "0.1.1"]
+    [systems.billo/sockets "0.1.1"]]
   :profiles {
     :ubercompile {
       :aot :all}
@@ -21,12 +25,7 @@
         [com.stuartsierra/component "0.3.2"]]
         :main billo.example.cli-server}
     :clojure {
-      :source-paths ["src/clj"]
-      :dependencies [
-        [clojusc/trifl "0.3.0"]
-        [org.clojure/core.async "0.4.474"]
-        [systems.billo/inet-address "0.1.1"]
-        [systems.billo/sockets "0.1.1"]]}
+      :source-paths ["src/clj"]}
     :client-example {
       :dependencies [
         [com.taoensso/timbre "4.10.0"]]
