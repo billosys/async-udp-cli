@@ -53,6 +53,7 @@
   :aliases {
     "ubercompile" ["with-profile" "+ubercompile,+clojure" "uberjar"]
     "uberjar" ["with-profile" "+clojure" "uberjar"]
+    "jar" ["with-profile" "+clojure" "jar"]
     "check-vers" ["with-profile" "+lint" "ancient" "check" ":all"]
     "check-jars" ["with-profile" "+lint" "do"
       ["deps" ":tree"]
