@@ -31,7 +31,7 @@
     (obj->clj (.-env js/process)))
   ([var-name]
     (or (get (get-env) var-name)
-        (log/error (str "ENV has no variabel named '" k "'")))))
+        (log/warn (str "ENV has no variabel named '" k "'")))))
 
 (defn get-log-level
   [default]
