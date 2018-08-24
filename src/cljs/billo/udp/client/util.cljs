@@ -42,5 +42,8 @@
     default))
 
 (defn set-log-level
-  []
-  (log/set-level! (get-log-level :info)))
+  ([]
+   (set-log-level :info))
+  ([level]
+   (log/set-level! (get-log-level level))))
+
