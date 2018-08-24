@@ -43,7 +43,7 @@
 
 (defn set-log-level
   ([]
-   (set-log-level :info))
+   (set-log-level (get-log-level :info)))
   ([level]
-   (log/set-level! (get-log-level level))))
+   (log/set-level! level)))
 
